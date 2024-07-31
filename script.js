@@ -20,7 +20,7 @@ function getComputerChoice() {
 }*/
 function getHumanChoice() {
     let userInput = Number(prompt('Choose rock paper or scissors.\nType 1 for Rock\nType 2 for Paper\nType 3 for Scissors'));
-    while (userInput < 1 || userInput > 3) {
+    while (userInput < 1 || userInput > 3 || isNaN(userInput)) {
         prompt('Invalid choice, try again.');
         userInput = Number(prompt('Choose rock paper or scissors.\nType 1 for Rock\nType 2 for Paper\nType 3 for Scissors'));
     }
