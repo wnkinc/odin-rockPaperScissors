@@ -93,7 +93,7 @@ function playGame() {
         let computer = getComputerChoice();
 
         prompt(playRound(player, computer));
-        prompt(`Your score is ${humanScore} and the computer\'s is ${computerScore}.`)
+        prompt(`Round: ${roundCount}. Your score is ${humanScore} and the computer\'s is ${computerScore}.`)
         roundCount++;
     }
 }
