@@ -1,9 +1,4 @@
-/*function getComputerChoice() {
-    return either rock paper scissors
-}*/
 function getComputerChoice() {
-    //math.random returns 0-1, i need three choices.. only three. 
-    //is it < .33, it > .33, or it >.66
     let choice = Math.random()
     if(choice < .33)
         return 'rock';
@@ -12,12 +7,6 @@ function getComputerChoice() {
     else return 'scissors';
 }
 
-//test function with console.log
-//console.log(getComputerChoice());
-
-/* function getHumanChoice() {
-    return valid choice on user input using prompt;
-}*/
 function getHumanChoice() {
     let userInput = Number(prompt('Choose rock paper or scissors.\nType 1 for Rock\nType 2 for Paper\nType 3 for Scissors'));
     while (userInput < 1 || userInput > 3 || isNaN(userInput)) {
@@ -27,21 +16,9 @@ function getHumanChoice() {
     return userInput;
 }
 
-//test function with console.log
-//console.log(getHumanChoice());
-
-/* declare global score variables - humanScore & computerScore - 
-both equal to 0*/
 var humanScore = 0;
 var computerScore = 0;
 
-/*play game by rounds, create 
-function playRound(humanChoice, computerChoice) {
-string value declaring round results
-either you win or you lose
-then ___ beats ____
-increment global score
-}*/
 function playRound(humanChoice, computerChoice) {
     let player = humanChoice;
     let computer = computerChoice;
@@ -75,27 +52,16 @@ function playRound(humanChoice, computerChoice) {
     return results;
 }
 
-/*game will have five founds, create
-function playGame() {
-    let player = getHumanChoice();
-    let computer =getComputerChoice();
-
-    let roundCount = 0;
-    while (roundCount < 6){
-         playRound(player, computer);
-    }
-}*/
-function playGame() {
-
-    let roundCount = 1;
-    while (roundCount < 6){
-        let player = getHumanChoice();
-        let computer = getComputerChoice();
-
-        prompt(playRound(player, computer));
-        prompt(`Round: ${roundCount}. Your score is ${humanScore} and the computer\'s is ${computerScore}.`)
-        roundCount++;
-    }
+const body = document.querySelector('body');
+function createButtons(choice) {
+    const button = document.createElement('button');
+    button.textContent = choice;
+    button.addEventListener('click', () => {
+    playRound(choice, getComputerChoice())
+    });
+    body.append(button);
 }
 
-playGame();
+createButtons('Rock');
+createButtons('Paper');
+createButtons('Scissors');
