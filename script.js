@@ -7,15 +7,6 @@ function getComputerChoice() {
     else return 'scissors';
 }
 
-function getHumanChoice() {
-    let userInput = Number(prompt('Choose rock paper or scissors.\nType 1 for Rock\nType 2 for Paper\nType 3 for Scissors'));
-    while (userInput < 1 || userInput > 3 || isNaN(userInput)) {
-        prompt('Invalid choice, try again.');
-        userInput = Number(prompt('Choose rock paper or scissors.\nType 1 for Rock\nType 2 for Paper\nType 3 for Scissors'));
-    }
-    return userInput;
-}
-
 const body = document.querySelector('body');
 const div = document.createElement('div');
 
@@ -60,6 +51,11 @@ function playRound(humanChoice, computerChoice) {
         + '\nYour score is: ' + humanScore + '. Computer score is: ' + computerScore;
         
     }
+
+    const buttons = document.querySelectorAll('button');
+    if(humanScore === 5) div.textContent = 'You Win!!! -Game over';
+    if(computerScore === 5) div.textContent = 'You lose!!! -Game over';
+    if(computerScore === 5 || humanScore === 5) buttons.forEach(button => button.remove());
 
     return;
 }
